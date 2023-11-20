@@ -3,19 +3,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kalpaka_customer_app/features/authentication/authController/authController.dart';
 import 'package:riverpod/riverpod.dart';
 
-
 class LoginScreen extends ConsumerStatefulWidget {
-   LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _phoneController=TextEditingController();
-  
-  loginUser(){
-    ref.read(authControllerProvider.notifier).loginUser(number: _phoneController.text, context: context);
+  final _phoneController = TextEditingController();
+
+  loginUser() {
+    ref
+        .read(authControllerProvider.notifier)
+        .loginUser(number: _phoneController.text, context: context);
   }
 
   @override
@@ -29,15 +30,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             child: TextFormField(
               controller: _phoneController,
               decoration: InputDecoration(
-                  hintText: 'phoneNumber :',
-                  border: OutlineInputBorder()),
+                  hintText: 'phoneNumber :', border: OutlineInputBorder()),
             ),
           ),
-
-          ElevatedButton(onPressed: (){
-loginUser();
-          },
-              child: Text("login"),
+          ElevatedButton(
+            onPressed: () {
+              loginUser();
+            },
+            child: Text("login"),
           )
         ],
       ),
